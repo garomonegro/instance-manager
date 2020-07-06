@@ -6,4 +6,5 @@ bin/*
 vendor
 vendor/*
 .DS_Store
+.vscode
 *.idea
