@@ -17,9 +17,17 @@ import (
 
 var t kdog.Test
 
+const (
+	DefaultWaiterInterval = time.Second * 30
+	DefaultWaiterRetries  = 40
+
+	FargateProfileFound    = "found"
+	FargateProfileNotFound = "not found"
+)
+
 func TestMain(m *testing.M) {
 	opts := godog.Options{
-		Format:    "progress",
+		Format:    "pretty",
 		Paths:     []string{"features"},
 		Randomize: time.Now().UTC().UnixNano(), // randomize scenario execution order
 	}
@@ -58,6 +66,7 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.AfterStep(func(s *godog.Step, err error) {
 		time.Sleep(time.Second * 5)
 	})
+
 	ctx.Step(`^the fargate profile of the resource ([^"]*) should be (found|not found)$`, theFargateProfileShouldBeFound)
 
 	t.SetScenario(ctx)

@@ -28,6 +28,10 @@ spec:
     maxSize: 4
     minSize: 2
     configuration:
+      roleName: iks-eks-agaro-test-k8s-ppd-nodes-NodeInstanceRole-GV7Q53DBJ17X
+      instanceProfileName: iks-eks-agaro-test-k8s-ppd-nodes-role-NodeInstanceProfile-9SZF607GPZKH
+      #nodeRole: {{ .NodeRole }}
+      #nodeRoleArn: {{.NodeRoleArn}}
       labels:
         test: bdd-test-crd
       taints:
